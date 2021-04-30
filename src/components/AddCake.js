@@ -100,9 +100,9 @@ class AddCake extends Component {
         if (!cakeDescription) {
             errors.errCakeDescription = "Kindly enter description";
         }
-        else if (!chkAlphaSpace(cakeDescription)) {
-            errors.errCakeDescription = "Only Alphabets and spaces are allowed ";
-        }
+        // else if (!chkAlphaSpace(cakeDescription)) {
+        //     errors.errCakeDescription = "Only Alphabets and spaces are allowed ";
+        // }
         else {
             formData.append("description", cakeDescription)
         }
@@ -116,7 +116,6 @@ class AddCake extends Component {
         })
 
         if (Object.keys(errors).length === 0) {
-            toast("No error");
             console.log("Entered values are ", formData);
             axios({
                 // url: "https://apibyashu.herokuapp.com/api/addcake",
@@ -125,14 +124,13 @@ class AddCake extends Component {
                 data: formData,
                 headers: {
                     'content-type': 'multipart/form-data',
-                    // authtoken: localStorage.token
                     Authorization: "Token "+localStorage.token
                 }
             }).then((response) => {
-                console.log("Response from API", response)
-
+                alert("Cake added successfully!")
+                window.location.replace("../");
             }, (err) => {
-                console.log("Error from API", err)
+                alert("oop! There is some error please try again")
             })
 
         }

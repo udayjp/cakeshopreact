@@ -46,8 +46,9 @@ const CakeDetails = (props) => {
                 }
             }).then((response) => {
                 console.log("APi result", response)
-                //alert(response.data.message)  
-                toast.success("Added to cart successfully!");
+                alert("Added to cart successfully!")  
+                // toast.success("Added to cart successfully!");
+                window.location.replace("../");
 
             }, (err) => {
                 console.log("Error from API", err)
